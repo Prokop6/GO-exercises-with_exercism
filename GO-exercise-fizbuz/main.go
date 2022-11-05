@@ -4,7 +4,7 @@ import "fmt"
 
 func main() {
 	for i := 1; i <= 50; i++ {
-		res := ""
+		var res string
 		if i % 3 == 0 {
 			res += "fizz"
 		}
