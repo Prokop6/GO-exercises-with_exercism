@@ -10,8 +10,29 @@ func PreparationTime(layers []string, avg int) int {
 	return avg * len(layers)	
 }
 
-// TODO: define the 'Quantities()' function
+func Quantities(layers []string) (int, float64) {
+	//Accepts a slice of layers to return needed ammounts of noodles [g] and souce [l]
+	
+	var noodles int
+	var souce float64
 
-// TODO: define the 'AddSecretIngredient()' function
+	noodlesPerLayer := 50 //grams
+	soucePerLayer := 0.2 //l
+	
+	for _, component := range layers {
+		if component == "noodles" {
+			noodles += noodlesPerLayer
+		} else if component == "souce" {
+			souce += soucePerLayer
+		} 
+		}
+		return noodles, souce
+	}
 
-// TODO: define the 'ScaleRecipe()' function
+func AddSecretIngredient() {
+	return false 
+}
+
+func ScaleRecipe() {
+	return false
+}
