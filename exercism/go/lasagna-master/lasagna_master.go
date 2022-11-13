@@ -30,11 +30,25 @@ func Quantities(layers []string) (int, float64) {
 	}
 
 func AddSecretIngredient(friendsList []string, components []string) {
+//Accepts two slices of components to substitue last item of second slice with last item of first slice
+
 	secretIngredient := friendsList[len(friendsList)-1]
 
 	components[len(components)-1] = secretIngredient
 }
 
-func ScaleRecipe() {
-	return false
+func ScaleRecipe(twoServings []float64, portions int) []float64 {
+//Accepts slice of amounts for 2 servings and target portion count to return slice of amounts for target serving count
+	multipleServings := make([]float64, len(twoServings))
+	times := float64(portions)/2.0
+
+	if len(twoServings) == 0 {
+		return []float64{}
+	}
+
+	for i, amount := range twoServings {
+		multipleServings[i] = amount * times
+	}
+
+	return multipleServings
 }
