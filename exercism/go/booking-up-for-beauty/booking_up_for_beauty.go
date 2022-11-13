@@ -4,12 +4,25 @@ import "time"
 
 // Schedule returns a time.Time from a string containing a date.
 func Schedule(date string) time.Time {
-	panic("Please implement the Schedule function")
-}
+	 time, err :=time.Parse("1/2/2006 15:04:05", date)
+
+	 if err == nil {
+		return time
+	} else {
+		panic(err)
+	}
+
+	}
 
 // HasPassed returns whether a date has passed.
 func HasPassed(date string) bool {
-	panic("Please implement the HasPassed function")
+	appoitment, err := time.Parse("January 2, 2006 15:04:05", date)
+
+	if err != nil {
+		panic(err)
+	}
+
+	return time.Now().After(appoitment)
 }
 
 // IsAfternoonAppointment returns whether a time is in the afternoon.
