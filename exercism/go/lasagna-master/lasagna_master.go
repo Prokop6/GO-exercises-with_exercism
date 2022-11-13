@@ -14,19 +14,19 @@ func Quantities(layers []string) (int, float64) {
 	//Accepts a slice of layers to return needed ammounts of noodles [g] and souce [l]
 	
 	var noodles int
-	var souce float64
+	var sauce float64
 
 	noodlesPerLayer := 50 //grams
-	soucePerLayer := 0.2 //l
+	saucePerLayer := 0.2 //l
 	
 	for _, component := range layers {
 		if component == "noodles" {
 			noodles += noodlesPerLayer
-		} else if component == "souce" {
-			souce += soucePerLayer
+		} else if component == "sauce" {
+			sauce += saucePerLayer
 		} 
 		}
-		return noodles, souce
+		return noodles, sauce
 	}
 
 func AddSecretIngredient(friendsList []string, components []string) {
