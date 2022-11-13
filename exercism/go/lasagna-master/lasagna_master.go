@@ -29,8 +29,10 @@ func Quantities(layers []string) (int, float64) {
 		return noodles, souce
 	}
 
-func AddSecretIngredient() {
-	return false 
+func AddSecretIngredient(friendsList []string, components []string) {
+	secretIngredient := friendsList[len(friendsList)-1]
+
+	components[len(components)-1] = secretIngredient
 }
 
 func ScaleRecipe() {
