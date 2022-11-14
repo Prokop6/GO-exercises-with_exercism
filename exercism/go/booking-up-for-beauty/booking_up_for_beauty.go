@@ -56,5 +56,5 @@ func Description(date string) string {
 
 // AnniversaryDate returns a Time with this year's anniversary.
 func AnniversaryDate() time.Time {
-	panic("Please implement the AnniversaryDate function")
+	return time.Date(time.Now().Year(), 9, 15, 0, 0, 0, 0, time.UTC)
 }
