@@ -1,6 +1,9 @@
 package booking
 
-import "time"
+import (
+	"fmt"
+	"time"
+)
 
 // Schedule returns a time.Time from a string containing a date.
 func Schedule(date string) time.Time {
@@ -41,7 +44,14 @@ func IsAfternoonAppointment(date string) bool {
 
 // Description returns a formatted string of the appointment time.
 func Description(date string) string {
-	panic("Please implement the Description function")
+	appointemet, err := time.Parse("1/2/2006 15:04:05", date)
+
+	if err != nil {
+		panic(err)
+	}
+
+	return fmt.Sprintf("You have an appointment on %s, %s %d, %d, at %d:%d.", appointemet.Weekday(), appointemet.Month(), appointemet.Day(), appointemet.Year(), appointemet.Hour(), appointemet.Minute() )
+
 }
 
 // AnniversaryDate returns a Time with this year's anniversary.
