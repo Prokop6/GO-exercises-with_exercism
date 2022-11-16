@@ -38,5 +38,7 @@ return fmt.Sprintf("%s (%d)", result.Name, result.Votes)
 
 // DecrementVotesOfCandidate decrements by one the vote count of a candidate in a map.
 func DecrementVotesOfCandidate(results map[string]int, candidate string) {
-	panic("Please implement the DecrementVotesOfCandidate() function")
+
+	results[candidate] -= 1
+
 }
