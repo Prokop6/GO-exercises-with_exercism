@@ -50,5 +50,13 @@ func CountAll(cb Chessboard) int {
 
 // CountOccupied returns how many squares are occupied in the chessboard.
 func CountOccupied(cb Chessboard) int {
-	panic("Please implement CountOccupied()")
+	var occupied int 
+		for _, file :=range cb {
+			for _, field := range file {
+				if field {
+					occupied +=1
+				}
+			}
+		}
+	return occupied
 }
