@@ -1,19 +1,17 @@
 package logs
 
-import "fmt"
-
 // Application identifies the application emitting the given log.
 func Application(log string) string {
 	appl := "default"
 	loop1: for _, lett := range log {
-		switch fmt.Sprintf("%U", lett) {
-			case "U+2757":
+		switch lett {
+			case '\u2757' :
 				appl = "recommendation"
 				break loop1
-			case "U+1F50D":
+			case '\U0001f50d':
 				appl = "search"
 				break loop1
-			case "U+2600":
+			case '\u2600':
 				appl = "weather"
 				break loop1
 		} 
