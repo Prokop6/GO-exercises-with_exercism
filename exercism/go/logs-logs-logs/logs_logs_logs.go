@@ -1,8 +1,24 @@
 package logs
 
+import "fmt"
+
 // Application identifies the application emitting the given log.
 func Application(log string) string {
-	panic("Please implement the Application() function")
+	appl := "default"
+	loop1: for _, lett := range log {
+		switch fmt.Sprintf("%U", lett) {
+			case "U+2757":
+				appl = "recommendation"
+				break loop1
+			case "U+1F50D":
+				appl = "search"
+				break loop1
+			case "U+2600":
+				appl = "weather"
+				break loop1
+		} 
+	}
+	return appl
 }
 
 // Replace replaces all occurrences of old with new, returning the modified log
