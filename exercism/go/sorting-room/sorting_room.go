@@ -55,5 +55,16 @@ func DescribeFancyNumberBox(fnb FancyNumberBox) string {
 
 // DescribeAnything should return a string describing whatever it contains.
 func DescribeAnything(i interface{}) string {
-	panic("Please implement DescribeAnything")
+	switch val := i.(type) {
+	case int:
+		return DescribeNumber(float64(val))
+	case float64:
+		return DescribeNumber(val)	
+	case NumberBox:
+		return DescribeNumberBox(val)
+	case FancyNumberBox:
+		return DescribeFancyNumberBox(val)
+	default:
+		return "Return to sender"
+	}
 }
