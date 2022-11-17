@@ -1,8 +1,10 @@
 package sorting
 
+import "fmt"
+
 // DescribeNumber should return a string describing the number.
 func DescribeNumber(f float64) string {
-	panic("Please implement DescribeNumber")
+	return fmt.Sprintf("This is the number %.1f", f)
 }
 
 type NumberBox interface {
@@ -11,8 +13,11 @@ type NumberBox interface {
 
 // DescribeNumberBox should return a string describing the NumberBox.
 func DescribeNumberBox(nb NumberBox) string {
-	panic("Please implement DescribeNumberBox")
+	number := nb.Number()
+
+	return fmt.Sprintf("This is a box containing the number %.1f", float32(number))
 }
+
 
 type FancyNumber struct {
 	n string
