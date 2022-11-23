@@ -2,6 +2,31 @@ package space
 
 type Planet string
 
+var terrestialYearPerPlanetaryCycle = map[Planet]float64{
+	"Mercury":  0.2408467,
+ "Venus": 0.61519726,
+ "Earth": 1.0, 
+ "Mars": 1.8808158, 
+ "Jupiter": 11.862615,
+ "Saturn": 29.447498, 
+ "Uranus": 84.016846,
+ "Neptune": 164.79132, 
+}
+
+const terrestialYearInSeconds = 31557600
+
+func calculateTerrestialYears(seconds float64) float64 {
+	return seconds/terrestialYearInSeconds
+}
+
 func Age(seconds float64, planet Planet) float64 {
-	panic("Please implement the Age function")
+
+	yearsPerCycle, isOk := terrestialYearPerPlanetaryCycle[planet]
+
+	if !isOk {
+		return -1.
+	}
+	
+	terrestialYears := calculateTerrestialYears(seconds)
+	return  terrestialYears / yearsPerCycle
 }
