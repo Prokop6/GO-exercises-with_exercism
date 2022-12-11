@@ -1,13 +1,18 @@
 package diffsquares
 
+import "math"
+
 func SquareOfSum(n int) int {
-	panic("Please implement the SquareOfSum function")
+	sum := n * (n + 1) / 2
+	
+	return int(math.Pow(float64(sum), 2))
 }
 
 func SumOfSquares(n int) int {
-	panic("Please implement the SumOfSquares function")
+	
+	return ((2 * n + 1) * (n + 1 ) * n) / 6
 }
 
 func Difference(n int) int {
-	panic("Please implement the Difference function")
+	return SquareOfSum(n) - SumOfSquares(n)
 }
