@@ -1,21 +1,56 @@
 package parsinglogfiles
 
+import (
+	"fmt"
+	"regexp"
+)
+
 func IsValidLine(text string) bool {
-	panic("Please implement the IsValidLine function")
+logMask := regexp.MustCompile(`^\[(?:TRC|DBG|INF|WRN|ERR|FTL)\].*$`)
+
+return logMask.MatchString(text)
 }
 
 func SplitLogLine(text string) []string {
-	panic("Please implement the SplitLogLine function")
+sepMask := regexp.MustCompile(`<(?:\~|\*|\=|\-)*>`)
+
+return sepMask.Split(text, -1)
 }
 
 func CountQuotedPasswords(lines []string) int {
-	panic("Please implement the CountQuotedPasswords function")
+pswdMask := regexp.MustCompile(`(?i)".*password.*"`)
+
+var matches int 
+
+for _, line := range lines {
+	if pswdMask.MatchString(line) {
+		matches += 1
+	}
+}
+return matches
 }
 
 func RemoveEndOfLineText(text string) string {
-	panic("Please implement the RemoveEndOfLineText function")
+	errorMask := regexp.MustCompile(`end-of-line\d*`)
+
+	return errorMask.ReplaceAllString(text,"")
 }
 
 func TagWithUserName(lines []string) []string {
-	panic("Please implement the TagWithUserName function")
+	userMask := regexp.MustCompile(`User\s+(\w+).*`)
+
+	var parsedStrings []string 
+
+	for _, line := range lines {
+		matches := userMask.FindStringSubmatch(line) 
+
+		if matches == nil {
+			parsedStrings = append(parsedStrings, line)
+		}	else {
+			correctedLine := fmt.Sprintf("[USR] %s %s", matches[1], line)
+			parsedStrings = append(parsedStrings, correctedLine)
+		}
+	}
+
+	return parsedStrings
 }

@@ -32,5 +32,6 @@ func (d DNA) Counts() (Histogram, error) {
 		return emptyHist, errors.New("invalid symbol in DNA sample")
 		}
 	}
+
 	return h, nil
 }
