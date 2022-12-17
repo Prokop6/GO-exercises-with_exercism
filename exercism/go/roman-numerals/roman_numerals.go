@@ -8,8 +8,10 @@ import (
 
 var decimalToRoman = map[int]string{
 	1000:	"M",
-	100:	"L",
+	100:	"C",
+	50:		"L",
 	10:		"X",
+	5:		"V",
 	1:		"I",
 }
 
