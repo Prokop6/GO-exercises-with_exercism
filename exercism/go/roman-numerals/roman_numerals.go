@@ -2,8 +2,6 @@ package romannumerals
 
 import (
 	"errors"
-	"fmt"
-	"math"
 )
 
 var decimalToRoman = map[int]string{
@@ -15,46 +13,36 @@ var decimalToRoman = map[int]string{
 	1:		"I",
 }
 
-func getQuotientAndModulo (input, divider int) (int, int) {
-	var quot, mod int 
+func convert(roman string, decimal int) (string, int) {
+	if decimal >= 1000 {
+		decimal -= 1000
+		roman += "M"
 
-	mod = int(math.Mod(float64(input), float64(divider)))
-	quot = (input - mod)/divider
-
-	return quot, mod
-}
-
-type decimalParts struct {
-	thds	int 
-	hrds	int
-	tens	int
-	ones	int
-}
-
-func decimalDisassamble (input int) *decimalParts {
-	disassambledDecimal := decimalParts{}
-	var rest int
-
-	disassambledDecimal.thds, rest = getQuotientAndModulo(input, 1000)
-	disassambledDecimal.hrds, rest = getQuotientAndModulo(rest, 100)
-	disassambledDecimal.tens, disassambledDecimal.ones = getQuotientAndModulo(rest, 10)
-
-	return &disassambledDecimal
+		roman, decimal = convert(roman, decimal)
+	}
+	
+	return roman, decimal
 }
 
 func ToRomanNumeral(input int) (string, error) {
-
+	var r = ""
+	var d int
+	
 	if input > 3999 {
-		return "", errors.New("cannot translate numbers bigger than 3999")
+		return r, errors.New("cannot translate numbers bigger than 3999")
 	}
 
 	if input <= 0 { 
-		return "", errors.New("cannot translate numbers smaller than 0")
+		return r, errors.New("cannot translate numbers smaller than 0")
 	}
 
-	decimals := decimalDisassamble(input)
+	r, d = convert(r, input)
 
-	fmt.Println(*decimals)
-
-		return "", errors.New("stil implementing")
+	/*
+	if d != 0 {
+		return "", errors.New("something went wrong")
+		} 
+		*/
+		println(d)
+		return r, nil
 }
