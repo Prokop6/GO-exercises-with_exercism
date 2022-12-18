@@ -1,5 +1,19 @@
 package reverse
 
+import "strings"
+
 func Reverse(input string) string {
-	panic("Please implement the Reverse function")
+	if len(input) == 0 {
+		return ""
+	}
+
+	var reversed string
+	ss := strings.Split(input, "")
+
+	for _, c := range ss {
+		reversed = c + reversed 
+	}
+
+	return reversed
 }
+
