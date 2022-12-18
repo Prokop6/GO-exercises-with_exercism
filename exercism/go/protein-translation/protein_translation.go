@@ -2,7 +2,6 @@ package protein
 
 import (
 	"errors"
-	"fmt"
 	"regexp"
 )
 
@@ -57,6 +56,7 @@ var InverseRnaCodonTable map[string]string = map[string]string{
 "AGC": "Serine",
 "AGA": "Arginine",
 "AGG": "Arginine",
+"GUU": "Valine",
 "GUC": "Valine",
 "GUA": "Valine",
 "GUG": "Valine",
@@ -82,8 +82,6 @@ func FromRNA(rna string) ([]string, error) {
 	m := re.FindStringSubmatch(rna)
 	var r []string
 
-	fmt.Println(m[0])
-
 	if m[0] == "" {
 		return r, ErrStop 
 	}
@@ -100,6 +98,7 @@ func FromRNA(rna string) ([]string, error) {
 		} 
 			r = append(r, p)
 	}
+
 	return r, nil
 }
 
